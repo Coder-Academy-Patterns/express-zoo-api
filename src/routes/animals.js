@@ -27,4 +27,10 @@ router.post('/animals', (req, res) => {
   res.status(201).json(newAnimal)
 })
 
+router.delete('/animals/:id', (req, res) => {
+  const id = req.params['id']
+  const removedAnimal = Animal.destroy(id)
+  res.json(removedAnimal)
+})
+
 module.exports = router

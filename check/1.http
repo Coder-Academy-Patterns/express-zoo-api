@@ -26,3 +26,7 @@ Content-Type: application/json
   "name": "Lion",
   "count": 94
 }
+
+###
+
+DELETE http://localhost:7000/animals/2
