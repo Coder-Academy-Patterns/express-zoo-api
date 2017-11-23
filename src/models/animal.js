@@ -42,10 +42,30 @@ function find(id) {
 
 // Create
 
+function create(attributes) {
+  // Create new animal 'record' copying attributes across
+  // and assigning it an id
+  const newAnimal = Object.assign({}, attributes, {
+    id: nextID
+  })
+  // Increment id for next time
+  nextID += 1
+  
+  // Add to our array that stores our data
+  animals.push(newAnimal)
+
+  return newAnimal
+}
+
 // Update
 
 function update(id, attributes) {
   const animal = find(id)
+  // Check if animal was not found
+  if (!animal) {
+    // If so, bail early
+    return null
+  }
   // Warning: attributes may contain 'id' or other unwanted attributes
   Object.assign(animal, attributes)
   // Return the updated animal
@@ -74,5 +94,6 @@ module.exports = {
   all,
   find,
   create,
+  update,
   destroy
 }

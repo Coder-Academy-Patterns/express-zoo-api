@@ -27,10 +27,27 @@ router.post('/animals', (req, res) => {
   res.status(201).json(newAnimal)
 })
 
+router.patch('/animals/:id', (req, res) => {
+  const id = req.params['id']
+  const attributes = req.body
+  const updatedAnimal = Animal.update(id, attributes)
+  if (updatedAnimal) {
+    res.json(updatedAnimal)
+  }
+  else {
+    res.status(404).json({ error: `The animal with id '${id}' was not found` })
+  }
+})
+
 router.delete('/animals/:id', (req, res) => {
   const id = req.params['id']
   const removedAnimal = Animal.destroy(id)
-  res.json(removedAnimal)
+  if (removedAnimal) {
+    res.json(removedAnimal)
+  }
+  else {
+    res.status(404).json({ error: `The animal with id '${id}' was not found` })
+  }
 })
 
 module.exports = router
