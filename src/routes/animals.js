@@ -21,4 +21,10 @@ router.get('/animals/:id', (req, res) => {
   }
 })
 
+router.post('/animals', (req, res) => {
+  const attributes = req.body
+  const newAnimal = Animal.create(attributes)
+  res.status(201).json(newAnimal)
+})
+
 module.exports = router

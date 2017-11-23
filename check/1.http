@@ -10,7 +10,19 @@ GET http://localhost:7000/tickets
 
 
 ###
-http://localhost:7000/animals/1
+GET http://localhost:7000/animals
 
 ###
-http://localhost:7000/animals/6
+GET http://localhost:7000/animals/1
+
+###
+GET http://localhost:7000/animals/6
+
+###
+POST http://localhost:7000/animals
+Content-Type: application/json
+
+{
+  "name": "Lion",
+  "count": 94
+}
